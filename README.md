@@ -20,7 +20,7 @@ Se expone un endpoint /login para iniciar la autenticación de usuario a través
 
 Se exponen en la API los siguientes endpoints:
 
-Profile
+### Profile
 Endpoint: /profile
 
     GET - facilita la información del usuario obtenida desde Github
@@ -63,7 +63,7 @@ Endpoint: /profile
             "message": "Error",
         }
 
-Users
+### Users
 Endpoint: /users
 
     GET - Obtiene todos los usuarios de la base de datos:
@@ -104,7 +104,7 @@ Endpoint: /users
             ]
         }
 
-Star
+### Star
 Endpoint: /star
 
     GET - Otorga una estrella al repositorio indicado:
