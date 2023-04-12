@@ -20,6 +20,21 @@ Se expone un endpoint /login para iniciar la autenticación de usuario a través
 
 Se exponen en la API los siguientes endpoints:
 
+### Main
+Endpoint: /
+
+    GET - mensaje de información del proyecto
+
+        Recibe:
+            Parametros:
+
+        Devuelve: JSON
+
+            code = Number (Código de estado HTML: 200 OK).
+            message = String
+
+
+
 ### Profile
 Endpoint: /profile
 

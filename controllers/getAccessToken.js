@@ -14,7 +14,7 @@ const getAccessToken = async (req, res, next) => {
         const response = await fetch(`http://github.com/login/oauth/access_token${queryParams}`, {
             method: "POST",
             headers: {
-                "Accept": "application/vnd.github+json",
+                "Accept": "application/json",
                 'X-OAuth-Scopes': 'public_repo'
             }
         });

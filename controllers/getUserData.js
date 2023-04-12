@@ -5,10 +5,13 @@ import { User } from "../db/dbConnection.js";
 dotenv.config();
 
 // Solicitud de la información de usuario a través de la API de Github
-const getUserData = async (req, res, next) => {
+const getUserData = async (req, res) => {
+
+    // Obtención del token devuelto por Github en la URL
     const token = req.query.token;
-    
+
     try{
+        // Solicitud de los datos del usuario autentificado
         const response = await fetch("https://api.github.com/user", {
             method: "GET",
             headers: {
@@ -24,6 +27,7 @@ const getUserData = async (req, res, next) => {
             }
         });
 
+        // Check si existe el usario en la BBDD, si no, se guarda la información
         if(!user) {
             user = await User.create({ login: data.login, email: data.email, githubId: data.id, token: req.query.token});
             req.session.userId = user.userId;

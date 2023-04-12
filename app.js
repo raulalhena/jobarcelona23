@@ -27,7 +27,10 @@ app.use("/api", apiRouter);
 
 // Endpoint principal
 app.get("/", (req, res) => {
-    res.status(200).send("GitHub social login implementation");
+    res.status(200).json({
+        code: 200,
+        message: "GitHub social login implementation"
+    });
 });
 
 // Ejecución del servidor en puerto 3000
