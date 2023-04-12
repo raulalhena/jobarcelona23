@@ -4,7 +4,7 @@ Registro de usuarios usando GitHub. Se han creado tres endpoints protegidos a tr
 
 El proyecto se ha creado para la participación en el hackathon JoBarcelona 2023 según las especificaciones solicitadas.
 
-# Usage
+Usage
 
 Para usarlo, es necesario realizar consultas a los endpoints descritos en la sección API para realizar la acción deseada a través del verbo HTTP: GET.
 
@@ -132,19 +132,19 @@ Para agilizar el desarrollo se ha utilizado el paquete nodemon que se encuentra 
 
 Para poder instalar todo lo necesario a excepción del servidor MySQL hay que seguir los siguientes pasos:
 
-## Clonar repositorio
+# Clonar repositorio
 
 git clone https://github.com/raulalhena/jobarcelona23.git
 
-## Instalación de paquetes
+# Instalación
 
 npm install
 
-## Creación de archivo .env en el directorio raíz de la app
+# Creación de archivo .env en el directorio raíz de la app
 
 touch .env
 
-## El archivo .env tendrá las siguientes variables:
+# El archivo .env tendrá las siguientes variables:
 
     PORT = [PUERTO DEL SERVIDOR EXPRESS [3000]]
     HOST = [DIRECCION DEL SERVIDOR EXPRESS ["http://localhost"]]
@@ -157,15 +157,15 @@ touch .env
     CLIENT_SECRET = [SECRETO DE LA APLICACION REGISTRADA EN GITHUB]
     SESSION_SECRET = [SECRETO DE LA SESIÓN, CUALQUIER CADENA DE TEXTO]
 
-## Ejecución del servidor para desarrollo con NODEMON:
+# Ejecución del servidor para desarrollo con NODEMON:
 
 npm run dev
 
-## Ejecución del servidor para producción:
+# Ejecución del servidor para producción:
 
 node app.js
 
-# Stack
+Stack
 
     NodeJS
     Express
