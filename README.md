@@ -10,6 +10,8 @@ Para usarlo, es necesario realizar consultas a los endpoints descritos en la sec
 
 Se levanta el servidor Express, por defecto en el puerto 3000, para la exposición de la API, usando el ORM Sequelize junto a MySQL para la persistencia de datos.
 
+Sequelize sincroniza y crea la tabla de 'users' acorde con el esquema del modelo User cada vez que se levanta el servidor.
+
 Encontrarás el uso de importación de módulos de ES6, configurado en el package.json. Se ha realizado con JS funcional. El trabajo asíncrono se ha implementado con el uso de async/await para simplificar y conseguir una mayor legibilidad del código.
 
 API/Component
@@ -105,25 +107,16 @@ Endpoint: /users
 Star
 Endpoint: /star
 
-    GET - Obtiene todos los usuarios de la base de datos:
+    GET - Otorga una estrella al repositorio indicado:
 
         Recibe:
-            Parametros en URL:
+            Parametros en URL (/api/star?repositoryOwner=[LOGIN PROPIETARIO]&repository=[NOMBRE REPOSITORIO]):
                 - repositoryOwner
                 - repository
 
         Devuelve: JSON
 
             code = Number (Código de estado HTML: 200 OK, 400 SOLICITUD INCORRECTA).
-
-            users = Array con los usuarios obtenidos:
-                "userId": ,
-                "login": "",
-                "email": ,
-                "githubId": "",
-                "token": "",
-                "createdAt": "",
-                "updatedAt": ""
 
 Installation
 
@@ -138,9 +131,10 @@ Para el correcto funcionamiento se requiere de los siguientes tecnologías:
 Para agilizar el desarrollo se ha utilizado el paquete nodemon que se encuentra en las dependencias de desarrollo del paquete package.json.
 
 Para poder instalar todo lo necesario a excepción del servidor MySQL hay que seguir los siguientes pasos:
+
 # Clonar repositorio
 
-git clone https://github.com/raulalhena/jump2.git
+git clone https://github.com/raulalhena/jobarcelona23.git
 
 # Instalación
 
@@ -152,23 +146,30 @@ touch .env
 
 # El archivo .env tendrá las siguientes variables:
 
-HOST=http://localhost
-SERVER_PORT=5000
-DB_URL=mysql://USUARIO_MYSQL:PASSWORD_MYSQL@localhost:3306/NOMBRE_BBDD
+PORT = [PUERTO DEL SERVIDOR EXPRESS [3000]]
+HOST = [DIRECCION DEL SERVIDOR EXPRESS ["http://localhost"]]
+DB_NAME = [NOMBRE DE LA BASE DE DATOS]
+DB_USER = [NOMBRE DE USUARIO DE ACCESO A LA BASE DE DATOS]
+DB_PASSWD = [PASSWORD ACCES A LA BASE DE DATOS]
+DB_DIALECT = [LA BASE DE DATOS QUE USES ["mysql"]]
+DB_HOST = [HOST QUE ALBERGA BBDD]
+CLIENT_ID = [ID DE LA APLICACION REGISTRADA EN GITHUB]
+CLIENT_SECRET = [SECRETO DE LA APLICACION REGISTRADA EN GITHUB]
+SESSION_SECRET = [SECRETO DE LA SESIÓN, CUALQUIER CADENA DE TEXTO]
 
-# Importación esquema una vez creada la BBDD en MySQL
-
-mysql -u USUARIO_MYSQL -p NOMBRE_BBDD < ./sql/jump2_v1.sql
-
-# Ejecución del servidor
+# Ejecución del servidor para desarrollo con NODEMON:
 
 npm run dev
+
+# Ejecución del servidor para producción:
+
+node app.js
 
 Stack
 
     NodeJS
     Express
-    Prisma
+    Sequelize
     MySQL
 
 Contact info
@@ -177,18 +178,3 @@ Contactame a mi email: raul.alhena@gmail.com
 License
 
 GNU General Public License v3.0 GNU
-
-
-
-curl -L \
-  -X PUT \
-  -H "Accept: application/vnd.github+json" \
-  -H "Authorization: Bearer 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"\
-  -H "X-GitHub-Api-Version: 2022-11-28" \
-  https://api.github.com/user/starred/raulalhena/chichosadventures
-
-  curl -L \
-  -H "Accept: application/vnd.github+json" \
-  -H "Authorization: Bearer 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"\
-  -H "X-GitHub-Api-Version: 2022-11-28" \
-  https://api.github.com/user/starred/raulalhena/jump2digital22
