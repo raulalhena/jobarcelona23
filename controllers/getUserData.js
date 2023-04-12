@@ -6,11 +6,13 @@ dotenv.config();
 
 // Solicitud de la información de usuario a través de la API de Github
 const getUserData = async (req, res, next) => {
+    const token = req.query.token;
+    
     try{
         const response = await fetch("https://api.github.com/user", {
             method: "GET",
             headers: {
-                "Authorization": `Bearer ${req.query.token}`
+                "Authorization": `Bearer ${token}`
             }
         });
         const data = await response.json();

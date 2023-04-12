@@ -2,7 +2,6 @@ import express from "express";
 import dotenv from "dotenv";
 import apiRouter from "./routes/api.js";
 import bodyParser from "body-parser";
-import cors from "cors";
 import session from "express-session";
 import routerLogin from "./routes/login.js";
 import routerToken from "./routes/getAccessToken.js";
@@ -14,7 +13,6 @@ const PORT = process.env.PORT;
 
 // Set de los middlewares y rutas
 app.disable("x-powered-by");
-app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session({
